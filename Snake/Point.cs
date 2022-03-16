@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +8,7 @@ namespace Snake
 {
 	class Point
 	{
+		// Поля
 		public int x;
 		public int y;
 		public char sym;
@@ -30,6 +31,8 @@ namespace Snake
 			sym = p.sym;
 		}
 
+
+		// Конструктор управления змейкой
 		public void Move(int offset, Direction direction)
 		{
 			if (direction == Direction.RIGHT)
