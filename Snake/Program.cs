@@ -13,6 +13,7 @@ namespace Snake
         {
 			Console.SetBufferSize(250, 80);
 
+			// Отрисовка стен
 			Walls walls = new Walls(80, 25);
 			walls.Draw();
 
@@ -21,10 +22,12 @@ namespace Snake
 			Snake snake = new Snake(p, 4, Direction.RIGHT);
 			snake.Draw();
 
+			// Создание еды
 			FoodCreator foodCreator = new FoodCreator(80, 25, '$');
 			Point food = foodCreator.CreateFood();
 			food.Draw();
 
+			// Условие если змейка съедает еду, то на поле рандомно создаётся новая еда
 			while (true)
 			{
 				if (walls.IsHit(snake) || snake.IsHitTail())
@@ -48,23 +51,7 @@ namespace Snake
 					snake.HandleKey(key.Key);
 				}
 			}
-			WriteGameOver();
 			Console.ReadLine();
-		}
-
-
-		static void WriteGameOver()
-		{
-			int xOffset = 25;
-			int yOffset = 8;
-			Console.ForegroundColor = ConsoleColor.Red;
-			Console.SetCursorPosition(xOffset, yOffset++);
-			WriteText("============================", xOffset, yOffset++);
-			WriteText("И Г Р А    О К О Н Ч Е Н А", xOffset + 1, yOffset++);
-			yOffset++;
-			WriteText("Автор: Daniil Kuzjomin", xOffset + 2, yOffset++);
-			WriteText("При помощи GeekBrains", xOffset + 1, yOffset++);
-			WriteText("============================", xOffset, yOffset++);
 		}
 
 		static void WriteText(String text, int xOffset, int yOffset)
