@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +8,17 @@ namespace Snake
 {
 	class FoodCreator
 	{
+		// Поля
 		int mapWidht;
 		int mapHeight;
 		char sym;
 
+
+		// Создание рандомной переменной
 		Random random = new Random();
 
+
+		// Конструктор
 		public FoodCreator(int mapWidth, int mapHeight, char sym)
 		{
 			this.mapWidht = mapWidth;
@@ -21,6 +26,8 @@ namespace Snake
 			this.sym = sym;
 		}
 
+
+		// Метод создания еды на поле
 		public Point CreateFood()
 		{
 			int x = random.Next(2, mapWidht - 2);
