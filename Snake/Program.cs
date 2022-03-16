@@ -48,7 +48,6 @@ namespace Snake
 					snake.HandleKey(key.Key);
 				}
 			}
-			WriteGameOver();
 			Console.ReadLine();
 		}
 
