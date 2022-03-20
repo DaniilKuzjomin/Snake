@@ -8,8 +8,11 @@ namespace Snake
 {
 	class Figure
 	{
+		// Список точек
 		protected List<Point> pList;
 
+		
+		// Метод отрисовки точки
 		public void Draw()
 		{
 			foreach (Point p in pList)
