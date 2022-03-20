@@ -47,7 +47,7 @@ namespace Snake
 				if (Console.KeyAvailable) // Проверка нажатия клавиши
 				{
 					ConsoleKeyInfo key = Console.ReadKey(); // Получает информацию о нажатой клавише
-					snake.HandleKey(key.Key); // Вызов проверки нажатия клавишь
+					snake.HandleKey(key.Key); // Вызов проверки нажатия клавиши
 				}
 			}
 			Console.ReadLine();
