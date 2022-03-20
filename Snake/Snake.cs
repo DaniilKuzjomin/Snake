@@ -68,7 +68,7 @@ namespace Snake
 		public bool Eat(Point food) // Метод поедания еды
 		{
 			Point head = GetNextPoint(); // Передвижение змейки
-			if (head.IsHit(food)) // Если координаты змейки и еды совпадают, добавляется новая еда на поле
+			if (head.IsHit(food)) // Если координаты змейки и еды совпадают то добавляется новая еда на поле
 			{
 				food.sym = head.sym;
 				pList.Add(food);
