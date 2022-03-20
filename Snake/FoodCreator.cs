@@ -8,7 +8,7 @@ namespace Snake
 {
 	class FoodCreator
 	{
-		// Поля
+		// Поля.
 		int mapWidht;
 		int mapHeight;
 		char sym;
