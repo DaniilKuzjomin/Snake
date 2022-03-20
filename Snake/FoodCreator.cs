@@ -18,7 +18,7 @@ namespace Snake
 		Random random = new Random();
 
 
-		// Конструктор
+		// Конструктор для места появления еды и её отображения.
 		public FoodCreator(int mapWidth, int mapHeight, char sym)
 		{
 			this.mapWidht = mapWidth;
