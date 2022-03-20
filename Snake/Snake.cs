@@ -52,6 +52,7 @@ namespace Snake
 			return false;
 		}
 
+		// Метод проверяющий реакцию на нажатие клавиш.
 		public void HandleKey(ConsoleKey key)
 		{
 			if (key == ConsoleKey.LeftArrow)
