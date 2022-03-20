@@ -12,7 +12,7 @@ namespace Snake
 		protected List<Point> pList;
 
 		
-		// Метод отрисовки точки
+		// Конструктор отрисовки точек
 		public void Draw()
 		{
 			foreach (Point p in pList)
