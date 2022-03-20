@@ -53,9 +53,6 @@ namespace Snake
 			}
 			Console.ReadLine();
 		}
-
-<<<<<<< HEAD
-=======
 		}
 		static void WriteText(String text, int xOffset, int yOffset)
 		{
