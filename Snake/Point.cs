@@ -8,11 +8,12 @@ namespace Snake
 {
 	class Point
 	{
-		// Поля
+		// Поля ( данные относящиеся к точке на экране )
 		public int x;
 		public int y;
 		public char sym;
 
+		// Конструктора позволяющие создавать экземпляры точек
 		public Point()
 		{
 		}
@@ -32,7 +33,7 @@ namespace Snake
 		}
 
 
-		// Конструктор управления змейкой
+		// Функция позволяющая перевести точку
 		public void Move(int offset, Direction direction)
 		{
 			if (direction == Direction.RIGHT)
@@ -58,6 +59,7 @@ namespace Snake
 			return p.x == this.x && p.y == this.y;
 		}
 
+		// Функция позволяющая отрисовать точку
 		public void Draw()
 		{
 			Console.SetCursorPosition(x, y);
