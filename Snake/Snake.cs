@@ -8,13 +8,13 @@ namespace Snake
 {
 	class Snake : Figure
 	{
-		Direction direction;
+		Direction direction; // Хранение данных класса направления
 
-		public Snake(Point tail, int length, Direction _direction)
+		public Snake(Point tail, int length, Direction _direction) // Конструктор задающий стартовую точку появления и задающий направление у змейки на поле 
 		{
-			direction = _direction;
-			pList = new List<Point>();
-			for (int i = 0; i < length; i++)
+			direction = _direction; // Переменная направления 
+			pList = new List<Point>(); // Список точек из которых состоит змейка
+			for (int i = 0; i < length; i++) // Цикл для создания копии хвостовой точки
 			{
 				Point p = new Point(tail);
 				p.Move(i, direction);
@@ -22,34 +22,34 @@ namespace Snake
 			}
 		}
 
-		public void Move()
+		public void Move() // Конструктор для движения змейки
 		{
-			Point tail = pList.First();
-			pList.Remove(tail);
-			Point head = GetNextPoint();
-			pList.Add(head);
+			Point tail = pList.First(); 
+			pList.Remove(tail); // Удаление точки хвоста для передвижения
+			Point head = GetNextPoint(); // Добавление точки для движения змейки
+			pList.Add(head); // Добавление точки в список
 
-			tail.Clear();
-			head.Draw();
+			tail.Clear(); // Уберает последнюю точку с хвоста
+			head.Draw(); // Отрисовка новой точки перед головой змейки
 		}
 
-		public Point GetNextPoint()
+		public Point GetNextPoint() // Функция для вычисления движения змейки
 		{
-			Point head = pList.Last();
-			Point nextPoint = new Point(head);
-			nextPoint.Move(1, direction);
-			return nextPoint;
+			Point head = pList.Last(); // Позиция главной точки до перемещения
+			Point nextPoint = new Point(head); // Создание новой точки которая будет являтся главной точкой
+			nextPoint.Move(1, direction); // Движение точки по направлению
+			return nextPoint; // Возврат переменной
 		}
 
-		public bool IsHitTail()
+		public bool IsHitTail() // Проверка столкнулась ли змейка со своих хвостом
 		{
-			var head = pList.Last();
-			for (int i = 0; i < pList.Count - 2; i++)
+			var head = pList.Last(); // Получение координат главной ( 1ой ) точки
+			for (int i = 0; i < pList.Count - 2; i++) // Проверка на совпадение координат главной точки и хвоста
 			{
-				if (head.IsHit(pList[i]))
-					return true;
+				if (head.IsHit(pList[i])) // Если есть пересечение
+					return true; // Возвращаем True
 			}
-			return false;
+			return false; // В других случаях возвращаем False
 		}
 
 		// Метод проверяющий реакцию на нажатие клавиш.
@@ -65,10 +65,10 @@ namespace Snake
 				direction = Direction.UP;
 		}
 
-		public bool Eat(Point food)
+		public bool Eat(Point food) // Метод поедания еды
 		{
-			Point head = GetNextPoint();
-			if (head.IsHit(food))
+			Point head = GetNextPoint(); // Передвижение змейки
+			if (head.IsHit(food)) // Если координаты змейки и еды совпадают, добавляется новая еда на поле
 			{
 				food.sym = head.sym;
 				pList.Add(food);
