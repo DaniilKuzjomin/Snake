@@ -11,53 +11,45 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-			Console.SetBufferSize(250, 80);
+			Console.SetBufferSize(250, 80); // Установка размера окна
 
 			// Отрисовка стен
 			Walls walls = new Walls(80, 25);
 			walls.Draw();
 
 			// Отрисовка точек			
-			Point p = new Point(4, 5, '*');
-			Snake snake = new Snake(p, 4, Direction.RIGHT);
-			snake.Draw();
+			Point p = new Point(4, 5, '*'); // Создание точки
+			Snake snake = new Snake(p, 4, Direction.RIGHT); // Создание изначальной змейки ( состоящей из 4 точек )
+			snake.Draw(); // Отрисовка созданной змейки на поле
 
 			// Создание еды
-			FoodCreator foodCreator = new FoodCreator(80, 25, '$');
-			Point food = foodCreator.CreateFood();
-			food.Draw();
+			FoodCreator foodCreator = new FoodCreator(80, 25, '$'); // Создание еды в заданных пределах
+			Point food = foodCreator.CreateFood(); // Вызов метода и создание точки еды
+			food.Draw(); // Отрисовка еды на поле
 
-			// Условие если змейка съедает еду, то на поле рандомно создаётся новая еда
 			while (true)
 			{
-				if (walls.IsHit(snake) || snake.IsHitTail())
+				if (walls.IsHit(snake) || snake.IsHitTail()) // Если змейка коснётся стенки или хвоста то игра заканчивается
 				{
 					break;
 				}
-				if (snake.Eat(food))
+				if (snake.Eat(food)) // Если змейка коснётся точки еды то появляется новая еда в новой точке
 				{
 					food = foodCreator.CreateFood();
 					food.Draw();
 				}
-				else
+				else // Движение змейки
 				{
 					snake.Move();
 				}
 
 				Thread.Sleep(100);
-				if (Console.KeyAvailable)
+				if (Console.KeyAvailable) // Проверка нажатия клавиши
 				{
-					ConsoleKeyInfo key = Console.ReadKey();
-					snake.HandleKey(key.Key);
+					ConsoleKeyInfo key = Console.ReadKey(); // Получает информацию о нажатой клавише
+					snake.HandleKey(key.Key); // Вызов проверки нажатия клавишь
 				}
 			}
 			Console.ReadLine();
-		}
-		}
-		static void WriteText(String text, int xOffset, int yOffset)
-		{
-			Console.SetCursorPosition(xOffset, yOffset);
-			Console.WriteLine(text);
-		}
 	}
 }
