@@ -18,14 +18,14 @@ namespace Snake
 		{
 		}
 
-		public Point(int x, int y, char sym)
+		public Point(int x, int y, char sym) // Конструктор вызова функции для создания точек
 		{
 			this.x = x;
 			this.y = y;
 			this.sym = sym;
 		}
 
-		public Point(Point p)
+		public Point(Point p) // Конструктор для создание точки за счёт другой точки
 		{
 			x = p.x;
 			y = p.y;
@@ -54,7 +54,7 @@ namespace Snake
 			}
 		}
 
-		public bool IsHit(Point p)
+		public bool IsHit(Point p) // Метод для проверки есть ли пересечение по координатам текущей точки и точки заданного аргумента  
 		{
 			return p.x == this.x && p.y == this.y;
 		}
@@ -66,7 +66,7 @@ namespace Snake
 			Console.Write(sym);
 		}
 
-		public void Clear()
+		public void Clear() // Метод для того что бы стереть последнюю точку с экрана
 		{
 			sym = ' ';
 			Draw();
