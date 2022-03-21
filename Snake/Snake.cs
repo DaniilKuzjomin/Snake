@@ -22,7 +22,7 @@ namespace Snake
 			}
 		}
 
-		public void Move() // Конструктор для движения змейки
+		public void Move() // Метод движения змейки
 		{
 			Point tail = pList.First(); 
 			pList.Remove(tail); // Удаление точки хвоста для передвижения
