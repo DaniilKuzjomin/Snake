@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +19,7 @@ namespace Snake
 
         public void Play()
         {
-            player.URL = pathToMedia + "music.mp3";
+            player.URL = pathToMedia + "fon.mp3";
             player.settings.volume = 30;
             player.controls.play();
             player.settings.setMode("loop", true);

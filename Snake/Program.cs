@@ -9,8 +9,8 @@ namespace Snake
 {
     internal class Program
     {
-        static void Main(string[] args)
-        {
+		static void Main(string[] args)
+		{
 			Console.SetBufferSize(250, 80); // Установка размера окна
 
 			// Отрисовка стен
@@ -21,6 +21,12 @@ namespace Snake
 			Point p = new Point(4, 5, '*'); // Создание точки
 			Snake snake = new Snake(p, 4, Direction.RIGHT); // Создание изначальной змейки ( состоящей из 4 точек )
 			snake.Draw(); // Отрисовка созданной змейки на поле
+			Console.ForegroundColor = ConsoleColor.Blue; // Изначальный цвет змейки
+
+			// Отрисовка очков;
+			Text.WriteText("Очки: 0", 81, 12);
+			Score scores = new Score();
+
 
 			// Создание еды
 			FoodCreator foodCreator = new FoodCreator(80, 25, '$'); // Создание еды в заданных пределах
@@ -37,19 +43,25 @@ namespace Snake
 				{
 					food = foodCreator.CreateFood();
 					food.Draw();
+					scores.Score_Increase(); // Увеличение счёта
 				}
 				else // Движение змейки
 				{
 					snake.Move();
 				}
 
-				Thread.Sleep(100);
+				Thread.Sleep(Speed.Snake_Speed(Score.playerScore)); // Скорость змейки ( смотреть Speed.cs )
+
 				if (Console.KeyAvailable) // Проверка нажатия клавиши
 				{
 					ConsoleKeyInfo key = Console.ReadKey(); // Получает информацию о нажатой клавише
 					snake.HandleKey(key.Key); // Вызов проверки нажатия клавиши
 				}
 			}
+			GameOver end = new GameOver();
+			end.Game_Over();
 			Console.ReadLine();
+		}
 	}
 }
+
